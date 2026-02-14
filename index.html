@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For Chhutku ❤️</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #0b1d3a 0%, #000814 100%);
+    color: white;
+    position: relative;
+  }
+
+  /* Moon */
+  .moon {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #fff 40%, #ddd 60%, transparent 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.6);
+    z-index: 5;
+  }
+
+  /* Stars */
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+  }
+
+  @keyframes twinkle {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Shooting star */
+  .shooting-star {
+    position: absolute;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(to right, white, transparent);
+    animation: shoot 1.5s linear forwards;
+    z-index: 10;
+  }
+
+  @keyframes shoot {
+    from {
+      transform: translateX(0) translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(400px) translateY(200px);
+      opacity: 0;
+    }
+  }
+
+  /* Water container - transparent, full height to allow layering */
+  .water {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40vh;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 4;
+  }
+
+  /* Soft flowing ripple overlay */
+  .water-ripple {
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(255, 200, 150, 0.25) 0%, transparent 70%);
+    animation: rippleMove 15s ease-in-out infinite;
+    filter: blur(10px);
+    opacity: 0.6;
+  }
+
+  @keyframes rippleMove {
+    0% {
+      transform: translateX(0) translateY(0) scale(1);
+    }
+    50% {
+      transform: translateX(20%) translateY(-15%) scale(1.05);
+    }
+    100% {
+      transform: translateX(0) translateY(0) scale(1);
+    }
+  }
+
+  /* Water reflection glow */
+  .water-reflection {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(to top, rgba(255, 180, 100, 0.2), transparent);
+    filter: blur(15px);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* Lanterns */
+  .lantern {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 28px;
+    background: radial-gradient(circle, #ffd27f 40%, #ffae42);
+    border-radius: 6px;
+    box-shadow: 0 0 20px #ffae42;
+    animation: floatLantern linear infinite;
+    filter: drop-shadow(0 0 8px #ffae42);
+    z-index: 6;
+  }
+  @keyframes floatLantern {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-110vh);
+      opacity: 0;
+    }
+  }
+
+  /* Container */
+  .container {
+    position: absolute;
+    bottom: 45%;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+  }
+
+  h1 {
+    font-size: 28px;
+    text-shadow: 0 0 25px #ffd27f;
+    margin-bottom: 25px;
+    animation: glowText 2s infinite alternate;
+  }
+
+  @keyframes glowText {
+    from {
+      text-shadow: 0 0 15px #ffd27f;
+    }
+    to {
+      text-shadow: 0 0 35px #ffcc66;
+    }
+  }
+
+  button {
+    padding: 12px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.4s;
+  }
+
+  #yesBtn {
+    background: #ff4d6d;
+    color: white;
+  }
+  #yesBtn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 30px #ff4d6d;
+  }
+  #noBtn {
+    background: #777;
+    color: white;
+    position: relative;
+  }
+
+  .loveMessage {
+    margin-top: 25px;
+    font-size: 24px;
+    color: #ffd700;
+    text-shadow: 0 0 25px #ffd700;
+    display: none;
+    animation: fadeIn 2s ease forwards;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Magical particles on YES */
+  .sparkle {
+    position: absolute;
+    font-size: 14px;
+    color: #ffd700;
+    animation: floatUp 3s linear forwards;
+  }
+  @keyframes floatUp {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-150px);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="moon"></div>
+
+<div class="water">
+  <div class="water-ripple"></div>
+  <div class="water-reflection"></div>
+</div>
+
+<div class="container">
+  <h1>Will you be my Valentine, Chhutku? 🏮✨</h1>
+  <button id="yesBtn">Yes ❤️</button>
+  <button id="noBtn">No 🙈</button>
+  <div class="loveMessage" id="loveMessage">
+    Chhutku ❤️ Under these magical stars, I choose you forever ✨🏮
+  </div>
+</div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const loveMessage = document.getElementById("loveMessage");
+
+  /* Create sparkling stars */
+  for (let i = 0; i < 200; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.width = star.style.height = (Math.random() * 2 + 1) + "px";
+    star.style.animationDuration = (Math.random() * 2 + 1) + "s";
+    document.body.appendChild(star);
+  }
+
+  /* Shooting stars every few seconds */
+  setInterval(() => {
+    const shoot = document.createElement("div");
+    shoot.classList.add("shooting-star");
+    shoot.style.top = Math.random() * 50 + "vh";
+    shoot.style.left = Math.random() * 50 + "vw";
+    document.body.appendChild(shoot);
+    setTimeout(() => shoot.remove(), 1500);
+  }, 4000);
+
+  /* Lanterns */
+  function createLantern() {
+    const lantern = document.createElement("div");
+    lantern.classList.add("lantern");
+    lantern.style.left = Math.random() * 100 + "vw";
+    lantern.style.animationDuration = (Math.random() * 5 + 6) + "s";
+    document.body.appendChild(lantern);
+    setTimeout(() => lantern.remove(), 10000);
+  }
+  setInterval(createLantern, 300);
+
+  /* Escaping NO */
+  noBtn.addEventListener("mouseenter", function () {
+    const moveX = (Math.random() - 0.5) * 150;
+    const moveY = (Math.random() - 0.5) * 80;
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  });
+
+  /* YES click magic */
+  yesBtn.addEventListener("click", function () {
+    loveMessage.style.display = "block";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+
+    // golden sparkles burst
+    for (let i = 0; i < 50; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+      sparkle.innerHTML = "✨";
+      sparkle.style.left = "50%";
+      sparkle.style.top = "50%";
+      sparkle.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 3000);
+    }
+  });
+</script>
+</body>
+</html>
