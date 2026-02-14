@@ -4,67 +4,170 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>For Chhutku ❤️</title>
+
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    height: 100vh;
-    overflow: hidden;
-    font-family: "Segoe UI", sans-serif;
-    background: radial-gradient(circle at top, #0b1d3a 0%, #000814 100%);
-    color: white;
-    position: relative;
-  }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-  /* Moon */
-  .moon {
-    position: absolute;
-    top: 5vw;
-    right: 10vw;
-    width: 20vw;
-    height: 20vw;
-    background: radial-gradient(circle, #fff 40%, #ddd 60%, transparent 70%);
-    border-radius: 50%;
-    box-shadow: 0 0 6vw rgba(255, 255, 255, 0.6);
-    z-index: 5;
-  }
+body{
+  min-height:100vh;
+  overflow:hidden;
+  font-family:"Segoe UI",sans-serif;
+  background:radial-gradient(circle at top,#0b1d3a 0%,#000814 100%);
+  color:white;
+  position:relative;
+}
 
-  /* Stars */
-  .star { position: absolute; width: 0.5vw; height: 0.5vw; background: white; border-radius: 50%; animation: twinkle 2s infinite alternate; }
-  @keyframes twinkle { from {opacity:0.2} to {opacity:1} }
+/* ---------- Moon ---------- */
+.moon{
+  position:absolute;
+  top:40px;
+  right:8%;
+  width:clamp(120px,18vw,260px);
+  height:clamp(120px,18vw,260px);
+  background:radial-gradient(circle,#fff 40%,#ddd 60%,transparent 70%);
+  border-radius:50%;
+  box-shadow:0 0 80px rgba(255,255,255,.6);
+  z-index:5;
+}
 
-  /* Shooting star */
-  .shooting-star { position: absolute; width:15vw; height:0.2vw; background:linear-gradient(to right, white, transparent); animation: shoot 1.5s linear forwards; z-index:10;}
-  @keyframes shoot { from {transform:translateX(0) translateY(0); opacity:1} to {transform:translateX(40vw) translateY(20vh); opacity:0} }
+/* ---------- Stars ---------- */
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{from{opacity:.2}to{opacity:1}}
 
-  /* Water */
-  .water { position:absolute; bottom:0; width:100%; height:40vh; pointer-events:none; overflow:visible; z-index:4; }
-  .water-ripple { position:absolute; width:300%; height:300%; top:-100%; left:-100%; background:radial-gradient(circle at 50% 50%, rgba(255,200,150,0.25) 0%, transparent 70%); animation:rippleMove 15s ease-in-out infinite; filter: blur(1vw); opacity:0.6;}
-  @keyframes rippleMove { 0%{transform:translateX(0) translateY(0) scale(1);}50%{transform:translateX(20%) translateY(-15%) scale(1.05);}100%{transform:translateX(0) translateY(0) scale(1);} }
+/* ---------- Shooting star ---------- */
+.shooting-star{
+  position:absolute;
+  width:200px;
+  height:2px;
+  background:linear-gradient(to right,white,transparent);
+  animation:shoot 1.5s linear forwards;
+  z-index:10;
+}
+@keyframes shoot{
+  from{transform:translate(0,0);opacity:1}
+  to{transform:translate(400px,200px);opacity:0}
+}
 
-  .water-reflection { position:absolute; bottom:0; width:100%; height:40vh; background: linear-gradient(to top, rgba(255,180,100,0.2), transparent); filter:blur(1.5vw); pointer-events:none; z-index:3;}
+/* ---------- Water ---------- */
+.water{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:35vh;
+  pointer-events:none;
+  z-index:4;
+}
+.water-ripple{
+  position:absolute;
+  width:300%;
+  height:300%;
+  top:-100%;
+  left:-100%;
+  background:radial-gradient(circle at 50% 50%,rgba(255,200,150,.25) 0%,transparent 70%);
+  animation:rippleMove 15s ease-in-out infinite;
+  filter:blur(20px);
+  opacity:.6;
+}
+@keyframes rippleMove{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(20%,-15%) scale(1.05)}
+  100%{transform:translate(0,0) scale(1)}
+}
+.water-reflection{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:40vh;
+  background:linear-gradient(to top,rgba(255,180,100,.2),transparent);
+  filter:blur(30px);
+  z-index:3;
+}
 
-  /* Lanterns */
-  .lantern { position:absolute; bottom:-5vw; width:2vw; height:2.8vw; background:radial-gradient(circle, #ffd27f 40%, #ffae42); border-radius:0.6vw; box-shadow:0 0 2vw #ffae42; animation:floatLantern linear infinite; filter: drop-shadow(0 0 0.8vw #ffae42); z-index:6;}
-  @keyframes floatLantern { from{transform:translateY(0); opacity:1} to{transform:translateY(-110vh); opacity:0} }
+/* ---------- Lantern ---------- */
+.lantern{
+  position:absolute;
+  bottom:-40px;
+  width:18px;
+  height:28px;
+  background:radial-gradient(circle,#ffd27f 40%,#ffae42);
+  border-radius:10px;
+  box-shadow:0 0 25px #ffae42;
+  animation:floatLantern linear infinite;
+  z-index:6;
+}
+@keyframes floatLantern{
+  from{transform:translateY(0);opacity:1}
+  to{transform:translateY(-110vh);opacity:0}
+}
 
-  /* Container */
-  .container { position:absolute; bottom:45%; width:100%; text-align:center; z-index:10; }
-  h1 { font-size:6vw; text-shadow:0 0 2vw #ffd27f; margin-bottom:5vw; animation:glowText 2s infinite alternate; }
-  @keyframes glowText { from{ text-shadow:0 0 1.5vw #ffd27f } to{ text-shadow:0 0 3.5vw #ffcc66 } }
+/* ---------- Container ---------- */
+.container{
+  position:absolute;
+  top:45%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  width:min(90%,700px);
+  z-index:10;
+}
 
-  button { padding:3vw 6vw; font-size:4vw; border:none; border-radius:10vw; cursor:pointer; margin:2vw; transition:0.4s; }
-  #yesBtn { background:#ff4d6d; color:white; }
-  #yesBtn:hover { transform:scale(1.2); box-shadow:0 0 3vw #ff4d6d; }
-  #noBtn { background:#777; color:white; position:relative; }
+h1{
+  font-size:clamp(28px,4vw,56px);
+  text-shadow:0 0 20px #ffd27f;
+  margin-bottom:40px;
+  animation:glowText 2s infinite alternate;
+}
+@keyframes glowText{
+  from{text-shadow:0 0 15px #ffd27f}
+  to{text-shadow:0 0 40px #ffcc66}
+}
 
-  .loveMessage { margin-top:5vw; font-size:5vw; color:#ffd700; text-shadow:0 0 2vw #ffd700; display:none; animation:fadeIn 2s ease forwards; }
-  @keyframes fadeIn { from{opacity:0; transform:scale(0.6);} to{opacity:1; transform:scale(1);} }
+button{
+  padding:14px 36px;
+  font-size:clamp(16px,1.5vw,22px);
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  margin:10px;
+  transition:.3s;
+}
+#yesBtn{background:#ff4d6d;color:white;}
+#yesBtn:hover{transform:scale(1.15);box-shadow:0 0 25px #ff4d6d;}
+#noBtn{background:#777;color:white;position:relative;}
 
-  .sparkle { position:absolute; font-size:3vw; color:#ffd700; animation:floatUp 3s linear forwards; }
-  @keyframes floatUp { from{transform:translateY(0); opacity:1} to{transform:translateY(-30vh); opacity:0} }
+.loveMessage{
+  margin-top:40px;
+  font-size:clamp(22px,2.2vw,34px);
+  color:#ffd700;
+  text-shadow:0 0 15px #ffd700;
+  display:none;
+  animation:fadeIn 2s ease forwards;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(.6);}
+  to{opacity:1;transform:scale(1);}
+}
 
+.sparkle{
+  position:absolute;
+  font-size:22px;
+  color:#ffd700;
+  animation:floatUp 3s linear forwards;
+}
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:1}
+  to{transform:translateY(-30vh);opacity:0}
+}
 </style>
 </head>
+
 <body>
 
 <div class="moon"></div>
@@ -84,73 +187,69 @@
 </div>
 
 <script>
-  const noBtn = document.getElementById("noBtn");
-  const yesBtn = document.getElementById("yesBtn");
-  const loveMessage = document.getElementById("loveMessage");
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const loveMessage=document.getElementById("loveMessage");
 
-  /* Create sparkling stars */
-  for(let i=0;i<200;i++){
-    const star=document.createElement("div");
-    star.classList.add("star");
-    star.style.top=Math.random()*100+"vh";
-    star.style.left=Math.random()*100+"vw";
-    star.style.width=star.style.height=(Math.random()*1.5+0.5)+"vw";
-    star.style.animationDuration=(Math.random()*2+1)+"s";
-    document.body.appendChild(star);
+/* Stars */
+for(let i=0;i<200;i++){
+  const s=document.createElement("div");
+  s.className="star";
+  s.style.top=Math.random()*100+"vh";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=(Math.random()*2+1)+"s";
+  document.body.appendChild(s);
+}
+
+/* Shooting star */
+setInterval(()=>{
+  const shoot=document.createElement("div");
+  shoot.className="shooting-star";
+  shoot.style.top=Math.random()*50+"vh";
+  shoot.style.left=Math.random()*50+"vw";
+  document.body.appendChild(shoot);
+  setTimeout(()=>shoot.remove(),1500);
+},4000);
+
+/* Lanterns */
+function lantern(){
+  const l=document.createElement("div");
+  l.className="lantern";
+  l.style.left=Math.random()*100+"vw";
+  l.style.animationDuration=(Math.random()*5+6)+"s";
+  document.body.appendChild(l);
+  setTimeout(()=>l.remove(),10000);
+}
+setInterval(lantern,500);
+
+/* Move NO button but keep in screen */
+function moveNoBtn(){
+  const maxX=window.innerWidth/3;
+  const maxY=window.innerHeight/4;
+  const x=(Math.random()*maxX-maxX/2);
+  const y=(Math.random()*maxY-maxY/2);
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
+}
+noBtn.addEventListener("mouseenter",moveNoBtn);
+noBtn.addEventListener("touchstart",e=>{e.preventDefault();moveNoBtn();});
+
+/* YES click */
+yesBtn.onclick=()=>{
+  loveMessage.style.display="block";
+  yesBtn.style.display="none";
+  noBtn.style.display="none";
+
+  for(let i=0;i<50;i++){
+    const sp=document.createElement("div");
+    sp.className="sparkle";
+    sp.innerHTML="✨";
+    sp.style.left="50%";
+    sp.style.top="50%";
+    document.body.appendChild(sp);
+    setTimeout(()=>sp.remove(),3000);
   }
-
-  /* Shooting stars */
-  setInterval(()=>{
-    const shoot=document.createElement("div");
-    shoot.classList.add("shooting-star");
-    shoot.style.top=Math.random()*50+"vh";
-    shoot.style.left=Math.random()*50+"vw";
-    document.body.appendChild(shoot);
-    setTimeout(()=>shoot.remove(),1500);
-  },4000);
-
-  /* Lanterns */
-  function createLantern(){
-    const lantern=document.createElement("div");
-    lantern.classList.add("lantern");
-    lantern.style.left=Math.random()*100+"vw";
-    lantern.style.animationDuration=(Math.random()*5+6)+"s";
-    document.body.appendChild(lantern);
-    setTimeout(()=>lantern.remove(),10000);
-  }
-  setInterval(createLantern,300);
-
-  /* NO button move for mouse and touch */
-  function moveNoBtn(){
-    const moveX=(Math.random()-0.5)*40; // in vw for mobile
-    const moveY=(Math.random()-0.5)*20;
-    noBtn.style.transform=`translate(${moveX}vw, ${moveY}vh)`;
-  }
-
-  noBtn.addEventListener("mouseenter", moveNoBtn);
-  noBtn.addEventListener("touchstart", function(e){
-    e.preventDefault(); // prevent default tap
-    moveNoBtn();
-  });
-
-  /* YES click */
-  yesBtn.addEventListener("click", function(){
-    loveMessage.style.display="block";
-    yesBtn.style.display="none";
-    noBtn.style.display="none";
-
-    // sparkle burst
-    for(let i=0;i<50;i++){
-      const sparkle=document.createElement("div");
-      sparkle.classList.add("sparkle");
-      sparkle.innerHTML="✨";
-      sparkle.style.left="50%";
-      sparkle.style.top="50%";
-      sparkle.style.transform=`rotate(${Math.random()*360}deg)`;
-      document.body.appendChild(sparkle);
-      setTimeout(()=>sparkle.remove(),3000);
-    }
-  });
+};
 </script>
+
 </body>
 </html>
